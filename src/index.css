@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system - Dark/Urgent Upsell Theme */
+
+@layer base {
+  :root {
+    --background: 240 10% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 45 100% 51%;
+    --primary-foreground: 240 10% 8%;
+
+    --secondary: 0 84% 60%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 10% 18%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 142 76% 46%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 18%;
+    --ring: 45 100% 51%;
+
+    --radius: 0.75rem;
+
+    /* Custom upsell colors */
+    --gold: 45 100% 51%;
+    --gold-light: 45 100% 65%;
+    --gold-dark: 45 100% 40%;
+    --danger: 0 84% 60%;
+    --danger-light: 0 84% 70%;
+    --success: 142 76% 46%;
+    --success-light: 142 76% 60%;
+    --warning: 38 92% 50%;
+    --whatsapp-green: 142 70% 49%;
+    --whatsapp-dark: 200 18% 13%;
+    --whatsapp-bubble-out: 142 50% 25%;
+    --whatsapp-bubble-in: 210 10% 23%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-[hsl(var(--gold-light))] via-[hsl(var(--gold))] to-[hsl(var(--gold-dark))] bg-clip-text text-transparent;
+  }
+
+  .bg-gradient-gold {
+    @apply bg-gradient-to-r from-[hsl(var(--gold-dark))] via-[hsl(var(--gold))] to-[hsl(var(--gold-light))];
+  }
+
+  .shadow-gold {
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.3), 0 0 60px hsl(var(--gold) / 0.1);
+  }
+
+  .shadow-danger {
+    box-shadow: 0 0 20px hsl(var(--danger) / 0.4);
+  }
+
+  .glow-gold {
+    animation: glow-gold 2s ease-in-out infinite alternate;
+  }
+
+  .pulse-cta {
+    animation: pulse-cta 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  .typing-dots::after {
+    content: '';
+    animation: typing-dots 1.4s infinite;
+  }
+
+  .slide-in-right {
+    animation: slide-in-right 0.4s ease-out forwards;
+  }
+
+  .slide-out-right {
+    animation: slide-out-right 0.4s ease-out forwards;
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+
+  .counter-increment {
+    animation: counter-pulse 0.3s ease-out;
+  }
+}
+
+@keyframes glow-gold {
+  from {
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.4), 0 0 40px hsl(var(--gold) / 0.2);
+  }
+  to {
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.6), 0 0 60px hsl(var(--gold) / 0.3);
+  }
+}
+
+@keyframes pulse-cta {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 hsl(var(--gold) / 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px hsl(var(--gold) / 0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+@keyframes typing-dots {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes counter-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    color: hsl(var(--danger));
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
