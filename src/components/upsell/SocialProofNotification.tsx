@@ -17,7 +17,6 @@ const namesByCountry: Record<string, string[]> = {
   'Perú': ['Luis M.', 'Carlos A.', 'José R.', 'Diego F.', 'Fernando C.', 'Alberto P.', 'Ricardo L.'],
 };
 
-const countries = ['Argentina', 'México', 'Colombia', 'Chile', 'Perú'];
 
 const SocialProofNotification = () => {
   const [notification, setNotification] = useState<Notification | null>(null);
